@@ -45,3 +45,37 @@ function add_option_page(){
     // just by swapping the name we can add the submenu in different menus
 }
 
+// option api
+// add
+add_option('key','value'); #value can be anything and object an array string number 
+// retribe 
+get_option('key'); # if not defined will return false 
+// if defined as boolean try will return String 1
+//  if false will return false 
+// update option
+update_option('key','new value');
+// delete option 
+delete_option('key');
+
+// option has an optional parameter that is 4th parameter
+
+// creating the page option for the page setting
+// option page callback
+function callback(){
+    ?>
+    <form action="options.php" method="post">
+        <!-- your inputs -->
+
+    </form>
+<?
+}
+
+// registering the options
+// args are associated array like 
+$args = [
+    'type'=>'string',
+    'sanitize_callback'=>'sanitize function name',
+    'default'=>null # value if not defined
+]
+
+register_options('option group','option name','args');

@@ -23,5 +23,25 @@ add_menu_page(
     'dashicons-gears',# the icon from dash icons
     99 #where the menu should appear the position 
 );
+// add submenu to the above menu 
+add_submenu_page(
+    'my-plugin-settings',# parent slug
+    'My plugin submenu',# submenu title
+    'My submenu settings',# submenu sidebar title
+    'manage-options', #capability 
+    'my-submenu-settings',#slug
+    'my-submenu-function'#callback function
+)
 
 );
+
+# adding option page in settings 
+
+add_action('admin_menu','add_option page');
+function add_option_page(){
+    #adds a submenu in the Settings page 
+    add_option_page("page title", 'menu title','manage_options','page-slug','callback')
+    # there are variation to this function like add_dashboard_page, add_comment_page, add_pages_page, add_plugins_page
+    // just by swapping the name we can add the submenu in different menus
+}
+
